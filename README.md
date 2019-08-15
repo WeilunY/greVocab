@@ -1,5 +1,7 @@
-#A GRE Vocabulary Web App
+A GRE Vocabulary Web App
 
-#Front End: Vue.js
-#BackEnd: Java SpringBoot 
-#Database: MySQL
+Front End: Vue.js
+
+BackEnd: Java SpringBoot 
+
+Database: MySQL
