@@ -20,8 +20,8 @@ spring:
       content-type: text/html
 
 mybatis:
-  mapper-locations: classpath:mapping/*Mapper.xml
-  type-aliases-package: com.wy.gre_vocab.entity
+  mapper-locations: classpath*:/mapping/*/*.xml
+  type-aliases-package: com.wy.gre_vocab.*.entity
 
 logging:
   level:

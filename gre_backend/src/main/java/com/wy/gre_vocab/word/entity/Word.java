@@ -1,4 +1,4 @@
-package com.wy.gre_vocab.entity;
+package com.wy.gre_vocab.word.entity;
 
 import lombok.Data;
 
@@ -20,8 +20,6 @@ public class Word implements Serializable {
     // chinese definition
     private String chin_def;
 
-    // favorite
-    private int favorite;
 
 
 
