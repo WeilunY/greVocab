@@ -17,6 +17,11 @@ public class WordService {
         return wordMapper.selectWords(id);
     }
 
+    public List<Word> getAll(){
+        return wordMapper.getAll();
+    }
+    
+
     // add to fav
     public int addFavorite(int user_id, int word_id){
 

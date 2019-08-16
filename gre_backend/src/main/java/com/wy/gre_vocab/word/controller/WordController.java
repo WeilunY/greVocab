@@ -28,6 +28,11 @@ public class WordController {
 
     }
 
+    @GetMapping("/getAll")
+    public Result getAll(){
+        return Result.success(wordService.getAll());
+    }
+
     /**
      * Change favorite status
      * @param info: "user_id", "word_id", "favorite" (1: add to fav, 0: delete from fav)

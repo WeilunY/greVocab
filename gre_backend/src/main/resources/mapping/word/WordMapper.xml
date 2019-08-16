@@ -16,6 +16,11 @@
         </foreach>
     </select>
 
+    <select id="getAll" resultType="com.wy.gre_vocab.word.entity.Word">
+        SELECT * FROM vocab
+        ORDER BY id
+    </select>
+
 
     <select id="checkExist" resultType="int">
         SELECT COUNT(1) FROM favorite

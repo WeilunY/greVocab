@@ -12,6 +12,8 @@ public interface WordMapper {
 
     List<Word> selectWords(List<Integer> id);
 
+    List<Word> getAll();
+
     int checkExist(@Param("user_id") int user_id, @Param("word_id") int word_id);
 
     int addFavorite(@Param("user_id") int user_id, @Param("word_id") int word_id);
