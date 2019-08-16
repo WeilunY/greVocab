@@ -5,6 +5,7 @@ import com.wy.gre_vocab.word.entity.Word;
 import com.wy.gre_vocab.word.service.WordService;
 
 
+
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -27,7 +28,6 @@ public class WordController {
 
     }
 
-
     /**
      * Change favorite status
      * @param info: "user_id", "word_id", "favorite" (1: add to fav, 0: delete from fav)
@@ -49,7 +49,11 @@ public class WordController {
         else {
             return Result.success(wordService.deleteFavorite(user_id, word_id) + "");
         }
+    }
 
+    @GetMapping("/getFavorites/{id}")
+    public Result getFavoriteWords(@PathVariable("id") int id) {
+        return Result.success(Result.success(wordService.getFavoriteWords(id)));
     }
 
 

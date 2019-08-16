@@ -18,5 +18,7 @@ public interface WordMapper {
 
     int deleteFavorite(@Param("user_id") int user_id, @Param("word_id") int word_id);
 
+    List<Word> getFavoriteWords(@Param("id") int id);
+
 
 }

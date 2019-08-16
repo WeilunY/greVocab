@@ -32,6 +32,15 @@ public class WordService {
         return wordMapper.deleteFavorite(user_id, word_id);
     }
 
+    /**
+     * Get a list of favorite word
+     * @param id
+     * @return
+     */
+    public List<Word> getFavoriteWords(int id){
+        return wordMapper.getFavoriteWords(id);
+    }
+
 
 
 

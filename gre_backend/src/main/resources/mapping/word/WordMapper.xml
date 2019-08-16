@@ -35,6 +35,14 @@
         AND word_id = #{word_id}
     </delete>
 
+    <select id="getFavoriteWords" resultType="com.wy.gre_vocab.word.entity.Word">
+        select * from vocab
+        where id in
+        (select word_id from favorite
+        where user_id = #{id})
+        order by id
+    </select>
+
 
 
 </mapper>
