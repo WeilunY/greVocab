@@ -1,43 +1,38 @@
 <template>
   <div id="app">
-    <word-list :wordData = "words"/>
+    <!--<word-list :wordData = "words"/>-->
+    <word-card/>
   </div>
 </template>
 
 <script>
 import WordList from "@/components/WordList.vue"
+import WordCard from "@/components/WordCard.vue"
 
 export default {
   name: 'app',
 
   components: {
-    WordList
+
+    WordCard
   },
 
   data(){
-        return {
-            words:[
-                 {
-                    "id": 1,
-                    "word": "abase",
-                    "chin_def": "v.降低···的地位，贬抑，使卑下"
-                },
-                {
-                    "id": 2,
-                    "word": "abash",
-                    "chin_def": "v.使害羞，使尴尬"
-                },
-                {
-                    "id": 3,
-                    "word": "abate",
-                    "chin_def": "v.减轻，减少"
-                },
-                {
-                    "id": 16,
-                    "word": "abolish",
-                    "chin_def": "v.废止，废除(法律、制度、习俗等)"
-                }
-            ]
+    return{
+      words: [],
+    }
+  },
+
+   mounted(){
+      //this.getAllWords()
+    },
+
+    methods: {
+
+        async getAllWords(){
+            const response = await fetch("http://localhost:8080/word/getAll")
+            const data = await response.json()
+            this.words = data.data.data
         }
     }
 }

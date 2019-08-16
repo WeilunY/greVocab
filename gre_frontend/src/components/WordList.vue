@@ -25,18 +25,7 @@ export default {
         wordData: Array,
     },
 
-    mounted(){
-        this.getAllWords()
-    },
-
-    methods: {
-
-        async getAllWords(){
-            const response = await fetch("http://localhost:8080/word/getAll")
-            const data = await response.json()
-            this.wordData = data.data.data
-        }
-    }
+   
 }
 </script>
 

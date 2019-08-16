@@ -20,12 +20,18 @@ public class WordController {
     WordService wordService;
 
     // get word and definition by id
-    @GetMapping("/getWord")
+    @PostMapping("/getWord")
     public Result getWord(@RequestBody List<Integer> id) {
 
-       List<Word> words =  wordService.selectWords(id);
-       return Result.success(words);
+        List<Word> words =  wordService.selectWords(id);
+        return Result.success(words);
 
+    }
+
+    @GetMapping("/getAWord/{id}")
+    public Result getAWord(@PathVariable("id" )int id){
+        Word word = wordService.selectWord(id);
+        return Result.success(word);
     }
 
     @GetMapping("/getAll")

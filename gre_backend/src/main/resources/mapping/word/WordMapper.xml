@@ -16,6 +16,11 @@
         </foreach>
     </select>
 
+    <select id="selectWord" resultType="com.wy.gre_vocab.word.entity.Word">
+        SELECT * FROM vocab
+        WHERE id = #{id}
+    </select>
+
     <select id="getAll" resultType="com.wy.gre_vocab.word.entity.Word">
         SELECT * FROM vocab
         ORDER BY id
