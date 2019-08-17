@@ -14,7 +14,7 @@
                 </tr>
             </thead>
             <!-- for loop for loading data-->
-            <tr scope="row" v-for="word in words" :key="word.id">
+            <tr scope="row" v-for="word in words" :key="word.id" @click="toWord(word.id)">
                 <td>{{word.id}}</td>
                 <td>{{word.word}}</td>
                 <td>{{word.chin_def}}</td>
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import router from "@/router"
 
 export default {
     name: 'word-list',
@@ -40,14 +41,14 @@ export default {
         return {
             words: Object,
             currentPage: 1,
-            contentInPage: 10,
+            contentInPage: 15,
         }
     },
 
    mounted(){
     //    this.currentPage = 1,
     //    this.contentInPage = 10,
-       this.getRange(1, 10)
+       this.getRange(1, 15)
     },
 
 
@@ -87,15 +88,32 @@ export default {
             
 
             this.currentPage = this.currentPage + 1; 
-            const start = (this.currentPage - 1) * 10 + 1
-            const end = this.currentPage * 10
+            const start = (this.currentPage - 1) * this.contentInPage + 1
+            const end = this.currentPage * this.contentInPage
             this.getRange(start, end)
+        },
+
+        toWord(id){
+            router.push({name: "WordCard", params: {id: id}})
         }
     }
 }
 </script>
 
 <style scoped>
-   
+   .outer-container{
+        width: 700px;
+        position: absolute;
+        left: 0;
+        top: 80px;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+   }
+
+   .table{
+       width: 700;
+       text-align: center;
+   }
 
 </style>

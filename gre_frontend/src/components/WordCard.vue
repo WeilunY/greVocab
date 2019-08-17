@@ -11,7 +11,7 @@
     <div class="buttons">
         <button type="button" class="btn"
          @click="getWord(current_id - 1)">Previous</button>
-         
+
         <button type="button" class="btn"
         @click="getWord(current_id + 1)">Next</button>
     </div>
@@ -24,8 +24,17 @@
 export default {
     name: "word-card",
 
+    created(){
+        this.word_id = this.$route.params.id
+    },
+
     mounted(){
-        this.getWord(1);
+        if(this.word_id == null){
+            this.getWord(1);
+        } else {
+            this.getWord(this.word_id)
+        }
+        
     },
 
     data(){
@@ -38,6 +47,7 @@ export default {
 
     props: {
         user_id: Number,
+        word_id: Number, 
     },
 
     

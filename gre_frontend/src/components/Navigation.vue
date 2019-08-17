@@ -11,11 +11,12 @@
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <router-link to="/card" class="nav-link">Card</router-link>
-            </li>
-            <li class="nav-item">
               <router-link to="/list" class="nav-link">List</router-link>
             </li>
+            <li class="nav-item">
+              <router-link to="/card" class="nav-link">Card</router-link>
+            </li>
+            
           </ul>
          </div>
       

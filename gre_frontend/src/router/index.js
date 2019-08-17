@@ -11,7 +11,14 @@ export default new Router({
     {
       path: '/card',
       name: 'WordCard',
-      component: WordCard
+      component: WordCard,
+    },
+
+    {
+      path: '/card/:id',
+      name: 'WordCard',
+      component: WordCard,
+      props: true
     }, 
     {
       path: '/list',
