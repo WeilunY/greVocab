@@ -21,6 +21,14 @@ public class WordService {
         return wordMapper.selectWord(id);
     }
 
+    public int getCount() {
+        return wordMapper.getCount();
+    }
+
+    public List<Word> getRange(int start, int end){
+        return wordMapper.getRange(start, end);
+    }
+
     public List<Word> getAll(){
         return wordMapper.getAll();
     }

@@ -16,6 +16,10 @@ public interface WordMapper {
 
     List<Word> getAll();
 
+    List<Word> getRange(@Param("start") int start, @Param("end") int end);
+
+    int getCount();
+
     int checkExist(@Param("user_id") int user_id, @Param("word_id") int word_id);
 
     int addFavorite(@Param("user_id") int user_id, @Param("word_id") int word_id);

@@ -26,6 +26,15 @@
         ORDER BY id
     </select>
 
+    <select id="getRange" resultType="com.wy.gre_vocab.word.entity.Word">
+        SELECT * FROM vocab
+        WHERE id BETWEEN #{start} AND #{end}
+    </select>
+
+    <select id="getCount" resultType="int">
+        SELECT COUNT(1) FROM vocab
+    </select>
+
 
     <select id="checkExist" resultType="int">
         SELECT COUNT(1) FROM favorite

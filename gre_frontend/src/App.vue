@@ -1,43 +1,38 @@
 <template>
   <div id="app">
-    <!--<word-list :wordData = "words"/>-->
-    <word-card/>
+    <Navigation></Navigation>
+    <router-view/>
+    
+
   </div>
 </template>
 
 <script>
-import WordList from "@/components/WordList.vue"
-import WordCard from "@/components/WordCard.vue"
+// import WordList from "@/components/WordList.vue"
+// import WordCard from "@/components/WordCard.vue"
+import Navigation from './components/Navigation'
 
 export default {
   name: 'app',
 
   components: {
 
-    WordCard
+    // WordCard,
+    Navigation
   },
 
   data(){
     return{
-      words: [],
+      user_id: 1,
+      activeName: "first",
     }
   },
 
-   mounted(){
-      //this.getAllWords()
-    },
-
-    methods: {
-
-        async getAllWords(){
-            const response = await fetch("http://localhost:8080/word/getAll")
-            const data = await response.json()
-            this.words = data.data.data
-        }
-    }
+   
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
+

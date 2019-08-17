@@ -3,10 +3,7 @@ package com.wy.gre_vocab.user.controller;
 import com.wy.gre_vocab.common.Result;
 
 import com.wy.gre_vocab.user.service.UserService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.NotNull;
@@ -21,6 +18,7 @@ public class UserController {
     private UserService userService;
 
     // create a new user
+    @CrossOrigin(origins = "http://localhost:8081")
     @PostMapping("/createUser")
     public Result createNewUser(@RequestBody @NotNull Map<String, String> user){
 

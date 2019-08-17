@@ -9,8 +9,11 @@
 
     </div>
     <div class="buttons">
-        <el-button @click="getWord(current_id - 1)">Previous</el-button>
-        <el-button @click="getWord(current_id + 1)">Next</el-button>
+        <button type="button" class="btn"
+         @click="getWord(current_id - 1)">Previous</button>
+         
+        <button type="button" class="btn"
+        @click="getWord(current_id + 1)">Next</button>
     </div>
     
     </div>
@@ -21,12 +24,20 @@
 export default {
     name: "word-card",
 
+    mounted(){
+        this.getWord(1);
+    },
+
     data(){
         return {
-            current_id: 0,
-            word: "",
-            chin_def: "",
+            current_id: Number,
+            word: String,
+            chin_def: String,
         }   
+    },
+
+    props: {
+        user_id: Number,
     },
 
     
