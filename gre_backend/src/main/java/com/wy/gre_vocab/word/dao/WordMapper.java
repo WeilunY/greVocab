@@ -12,11 +12,9 @@ public interface WordMapper {
 
     List<Word> selectWords(List<Integer> id);
 
-    Word selectWord(int id);
-
     List<Word> getAll();
 
-    List<Word> getRange(@Param("start") int start, @Param("end") int end);
+    List<Word> getRange(@Param("start") int start, @Param("end") int end, @Param("id") int id);
 
     int getCount();
 
@@ -27,6 +25,8 @@ public interface WordMapper {
     int deleteFavorite(@Param("user_id") int user_id, @Param("word_id") int word_id);
 
     List<Word> getFavoriteWords(@Param("id") int id);
+
+    List<Word> getByKeyword(String keyword);
 
 
 }

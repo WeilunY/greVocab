@@ -20,6 +20,8 @@ public class Word implements Serializable {
     // chinese definition
     private String chin_def;
 
+    private int user_id;
+
 
 
 

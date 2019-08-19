@@ -30,17 +30,6 @@ public class WordController {
 
     }
 
-    /**
-     * Get a single word by id
-     * @param id
-     * @return
-     */
-    @CrossOrigin(origins = "http://localhost:8081")
-    @GetMapping("/getAWord/{id}")
-    public Result getAWord(@PathVariable("id" )int id){
-        Word word = wordService.selectWord(id);
-        return Result.success(word);
-    }
 
     /**
      * Get all words in the list
@@ -64,6 +53,7 @@ public class WordController {
 
             int start = range.get("start");
             int end = range.get("end");
+            int id = range.get("id");
 
             // check conditions
             if(start > end){
@@ -72,7 +62,7 @@ public class WordController {
                 end = temp;
             }
 
-            List<Word> words =  wordService.getRange(start, end);
+            List<Word> words =  wordService.getRange(start, end, id);
 
             return Result.success(words);
 
@@ -97,7 +87,7 @@ public class WordController {
     @PostMapping("changeFavorite")
     public Result changeFavorite(@RequestBody Map<String, Integer> info){
 
-        try {
+     
             // get important value
             int user_id = info.get("user_id");
             int word_id = info.get("word_id");
@@ -111,23 +101,28 @@ public class WordController {
             else {
                 return Result.success(wordService.deleteFavorite(user_id, word_id) + "");
             }
-        } catch (Exception e){
-            return Result.error(e.toString());
-        }
+
     }
 
     /**
      * Get all favorite words
-     * @param id
+     * @param user
      * @return
      */
     @CrossOrigin(origins = "http://localhost:8081")
-    @GetMapping("/getFavorites/{id}")
-    public Result getFavoriteWords(@PathVariable("id") int id) {
+    @RequestMapping("/getFavorites")
+    public Result getFavoriteWords(@RequestBody Map<String, Integer> user) {
+        int id = user.get("id");
         return Result.success(Result.success(wordService.getFavoriteWords(id)));
     }
 
 
+    @CrossOrigin(origins = "http://localhost:8081")
+    @RequestMapping("/getByKey")
+    public Result getByKeyword(@RequestBody Map<String, String> keyword){
+        String key = keyword.get("keyword");
+        return Result.success(wordService.getByKeyword(key));
+    }
 
 
 

@@ -16,42 +16,44 @@
         </foreach>
     </select>
 
-    <select id="selectWord" resultType="com.wy.gre_vocab.word.entity.Word">
-        SELECT * FROM vocab
-        WHERE id = #{id}
-    </select>
 
     <select id="getAll" resultType="com.wy.gre_vocab.word.entity.Word">
         SELECT * FROM vocab
-        ORDER BY id
+        ORDER BY id;
     </select>
 
     <select id="getRange" resultType="com.wy.gre_vocab.word.entity.Word">
-        SELECT * FROM vocab
-        WHERE id BETWEEN #{start} AND #{end}
+       select v.*, f.user_id
+        from vocab as v
+        left join favorite as f
+        on f.user_id = #{id} and
+        f.word_id = v.id
+        where v.id between #{start} and #{end}
+        order by v.id
+
     </select>
 
     <select id="getCount" resultType="int">
-        SELECT COUNT(1) FROM vocab
+        SELECT COUNT(1) FROM vocab;
     </select>
 
 
     <select id="checkExist" resultType="int">
         SELECT COUNT(1) FROM favorite
         WHERE user_id = #{user_id}
-        AND word_id = #{word_id}
+        AND word_id = #{word_id};
     </select>
 
     <insert id="addFavorite">
         INSERT INTO `favorite`
         SET `user_id` = #{user_id},
-            `word_id` = #{word_id}
+            `word_id` = #{word_id};
     </insert>
 
     <delete id="deleteFavorite">
         DELETE FROM favorite
         WHERE user_id = #{user_id}
-        AND word_id = #{word_id}
+        AND word_id = #{word_id};
     </delete>
 
     <select id="getFavoriteWords" resultType="com.wy.gre_vocab.word.entity.Word">
@@ -59,7 +61,13 @@
         where id in
         (select word_id from favorite
         where user_id = #{id})
-        order by id
+        order by id;
+    </select>
+
+    <select id="getByKeyword" resultType="com.wy.gre_vocab.word.entity.Word">
+        select * from vocab
+        where word like concat(#{keyword}, '%')
+        order by id;
     </select>
 
 

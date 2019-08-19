@@ -17,16 +17,12 @@ public class WordService {
         return wordMapper.selectWords(id);
     }
 
-    public Word selectWord(int id) {
-        return wordMapper.selectWord(id);
-    }
-
     public int getCount() {
         return wordMapper.getCount();
     }
 
-    public List<Word> getRange(int start, int end){
-        return wordMapper.getRange(start, end);
+    public List<Word> getRange(int start, int end, int id){
+        return wordMapper.getRange(start, end, id);
     }
 
     public List<Word> getAll(){
@@ -56,6 +52,10 @@ public class WordService {
      */
     public List<Word> getFavoriteWords(int id){
         return wordMapper.getFavoriteWords(id);
+    }
+
+    public List<Word> getByKeyword(String keyword) {
+        return wordMapper.getByKeyword(keyword);
     }
 
 
