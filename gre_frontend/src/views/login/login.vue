@@ -2,13 +2,13 @@
     <div class="container">
         <h1>Login to GRE Vocab</h1>
         <el-form :model="form">
-        <el-form-item label="Email: ">
-            <el-input v-model="form.email" placeholder="email"></el-input>
+        <el-form-item label="Email / Username: ">
+            <el-input v-model="form.email" placeholder="email or username"></el-input>
         </el-form-item>
         <el-form-item label="Password: ">
             <el-input v-model="form.password" placeholder="password" type="password"></el-input>
         </el-form-item>
-        <el-form-item>
+        <el-form-item style="padding-top: 18px">
             <el-button type="primary" @click="onSubmit">Login</el-button>
             <el-button  @click="toRegister">Register</el-button>
         </el-form-item>
@@ -26,6 +26,7 @@ export default {
         }
       }
     },
+
     methods: {
       async onSubmit() {
 
@@ -73,6 +74,7 @@ export default {
 
     h1{
         font-size: 32px;
+        margin-bottom: 20px;
     }
 
 </style>

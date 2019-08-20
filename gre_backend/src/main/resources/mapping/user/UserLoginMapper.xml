@@ -4,13 +4,13 @@
 
     <select id="verifyUser" resultType="int">
         SELECT COUNT(1) FROM `user`
-        WHERE `email` = #{email}
+        WHERE (`email` = #{email} OR `username` = #{email} )
         AND `password` = #{password}
     </select>
 
     <select id="getID" resultType="int">
         SELECT id FROM `user`
-        WHERE `email` = #{email}
+        WHERE (`email` = #{email} OR `username` = #{email} )
         AND `password` = #{password}
     </select>
 

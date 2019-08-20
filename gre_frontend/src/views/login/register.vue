@@ -152,6 +152,7 @@
 <style scoped>
     h2{
         font-size: 32px;
+        margin-bottom: 20px;
     }
     .container{
         width: 500px;
