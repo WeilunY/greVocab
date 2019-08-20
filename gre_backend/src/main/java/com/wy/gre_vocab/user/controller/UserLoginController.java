@@ -2,10 +2,7 @@ package com.wy.gre_vocab.user.controller;
 
 import com.wy.gre_vocab.common.Result;
 import com.wy.gre_vocab.user.service.UserLoginService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.constraints.NotNull;
@@ -20,7 +17,7 @@ public class UserLoginController {
 
     // verify info and return user_id
     @CrossOrigin(origins = "http://localhost:8081")
-    @RequestMapping("/verify")
+    @PostMapping("/verify")
     public Result verifyLogin(@RequestBody @NotNull Map<String, String> user) {
 
         String username = user.get("username");

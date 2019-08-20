@@ -33,15 +33,20 @@ router.beforeEach((to, from, next) => {
 
 const store = new Vuex.Store({
   state: {
-  count: 0,
-    adminCurrentMenu:"1" 
+    adminCurrentMenu:"",
+    adminUserId: -1, 
   },
+
   mutations: {
-    increment (state) {
-      state.count++
-      }
+    login(state, userId){
+      state.adminUserId = userId
+    }, 
+
+    navigate(state, menu){
+      state.adminCurrentMenu = menu
     }
-  })
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({

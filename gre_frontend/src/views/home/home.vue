@@ -2,10 +2,14 @@
 	<div class="homeContent">
 		<el-menu :default-active="currentMenu" class="el-menu-demo" 
 		background-color="#101619"
-  		text-color="#ecf8fe" active-text-color="#c6eafc"
+  		text-color="#ecf8fe" active-text-color="#a0ddfb"
 		mode="horizontal" @select="handleSelect">
 			<el-menu-item index="wordList">Word List</el-menu-item>
 			<el-menu-item index="flashCard">Flash Card</el-menu-item>
+			<div class="logout">
+				<el-button type="danger" size="small" @click="handleLogOut">Logout</el-button>
+			</div>
+			
 		</el-menu>
 		<router-view></router-view>
 	</div>
@@ -13,7 +17,7 @@
 
 <script>
 export default {
-	name: "App",
+	name: "home",
 	data() {
 		return {
 			currentMenu: 'wordList',
@@ -33,15 +37,15 @@ export default {
 		}, 
 
 		getNavType(){
-			this.currentMenu=this.$store.state.adminCurrentMenu;
+			this.currentMenu = this.$store.state.adminCurrentMenu;
+		}, 
+
+		handleLogOut(){
+			sessionStorage.clear()
+			this.$store.commit('login', -1)
+			this.$router.push('login')
 		}
 
-	},
-	mounted() {
-        const routeName = this.$route.name;
-		if (routeName === "home") {
-			this.$router.replace({ name: "wordList" });
-		}
 	},
 
 	watch: {
@@ -52,5 +56,9 @@ export default {
 </script>
 
 <style>
-
+	.logout{
+		float: right;
+		margin-top: 12px;
+		margin-right: 12px;
+	}
 </style>

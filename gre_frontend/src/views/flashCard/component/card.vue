@@ -16,10 +16,10 @@
     </el-card>
     <div class="buttons">
 
-            <el-button v-if="this.word_id > 1" @click="handleWord(0)">Previous</el-button>
+            <el-button v-if="this.word_id > 1" @click="handleWord(0)" icon="el-icon-arrow-left"></el-button>
             <el-button v-else disabled>Previous</el-button>
 
-            <el-button v-if="this.word_id < this.total" @click="handleWord(1)">Next</el-button>
+            <el-button v-if="this.word_id < this.total" @click="handleWord(1)" icon="el-icon-arrow-right"></el-button>
             <el-button v-else disabled>Previous</el-button>
         </div>
     </div>
@@ -31,10 +31,9 @@ export default {
     name: "card",
 
 
-
     data(){
         return {
-            user_id: 1,
+            user_id: -1,
             word: Object,
             word_id: Number,
             total: 0,
@@ -47,7 +46,7 @@ export default {
         } else {
             this.word_id = 1
         }
-
+        this.getUserId()
         this.getWord(this.word_id)
         this.getSize()
         
@@ -102,10 +101,17 @@ export default {
             const data = await response.json()
 
             this.getWord(this.word_id);
+        },
+
+        getUserId(){
+          this.user_id = sessionStorage.user_id
         }
         
+    },
 
-    }
+    watch: {
+        'sessionStorage.user_id': 'getUserId'
+      }
 
 }
 </script>

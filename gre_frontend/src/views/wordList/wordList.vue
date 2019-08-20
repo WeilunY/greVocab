@@ -27,7 +27,9 @@ export default {
   },
 
   created(){
-    this.getRange(1, 10, 1)
+    this.getUserId()
+    this.getRange(1, 10, this.user_id)
+  
     this.getSize()
   },
 
@@ -38,7 +40,7 @@ export default {
             pageSize: 10,
             total: 10,
             favorites: [],
-            user_id: 1,
+            user_id: -1,
         }
     },
 
@@ -111,16 +113,27 @@ export default {
                 headers: { 'Content-type': 'application/json'},
                 body: JSON.stringify({'user_id': this.user_id, 'word_id': row.id, 'favorite': status})
           })
+
           const data = await response.json()
 
           const start = (this.currentPage - 1) * this.pageSize + 1
           const end = this.currentPage * this.pageSize
 
           this.getRange(start, end, this.user_id);
-        }
-  }
+        },
 
-}
+        getUserId(){
+          this.user_id = sessionStorage.user_id
+        }
+      },
+
+      watch: {
+        'sessionStorage.user_id': 'getUserId'
+      }
+  }
+  
+
+
 </script>
 <style lang="css">
     .container {

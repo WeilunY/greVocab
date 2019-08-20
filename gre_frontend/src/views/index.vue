@@ -16,11 +16,20 @@ export default {
 		}
 	},
 	mounted() {
-		if (this.firstRouter && this.firstRouter.path !== "/") {
-			this.$router.replace(Object.assign({}, this.firstRouter));
+
+		const id = sessionStorage.user_id
+		if (id != null){
+
+			if (this.firstRouter && this.firstRouter.path !== "/") {
+				this.$router.replace(Object.assign({}, this.firstRouter));
+
+			} else {
+				this.$router.replace({ name: "wordList" });
+			}
 		} else {
-			this.$router.replace({ name: "wordList" });
+			this.$router.replace({ name: "login" });
 		}
+		
 	}
 };
 </script>

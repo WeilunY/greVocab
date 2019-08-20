@@ -17,7 +17,7 @@ export default  [
                 name: 'wordList',
                 meta: {
                     title: 'Word List',
-                    author: 'WY'
+                    author: 'WY',
                 },
                 component: (resolve) => {
                     require.ensure([], () => {
@@ -38,32 +38,19 @@ export default  [
                     }, 'flashCard/flashCard')
                 }
             },
-            {
-                path: '/msgCenter.html',
-                name: 'msgCenter',
-                meta: {
-                    title: '消息中心',
-                    author: 'luohao'
-                },
-                component: (resolve) => {
-                    require.ensure([], () => {
-                        return resolve(require('./views/msgCenter/msgCenter.vue'))
-                    }, 'msgCenter/msgCenter')
-                }
-            },
-            {
-                path: '/orderCenter.html',
-                name: 'orderCenter',
-                meta: {
-                    title: '订单管理',
-                    author: 'luohao'
-                },
-                component: (resolve) => {
-                    require.ensure([], () => {
-                        return resolve(require('./views/orderCenter/orderCenter.vue'))
-                    }, 'orderCenter/orderCenter')
-                }
-            }
+
         ]
+    }, 
+    {
+        path: '/login',
+        name: 'login',
+        meta: {
+            title: 'Login',
+        }, 
+        component: (resolve) => {
+            require.ensure([], () => {
+                return resolve(require('./views/login/login.vue'))
+            }, 'login/login')
+        }
     }
 ]
