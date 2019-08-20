@@ -1,4 +1,5 @@
 <template>
+	
 	<div class="homeContent">
 		<el-menu :default-active="currentMenu" class="el-menu-demo" 
 		background-color="#101619"
@@ -61,4 +62,5 @@ export default {
 		margin-top: 12px;
 		margin-right: 12px;
 	}
+
 </style>
