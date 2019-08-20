@@ -125,5 +125,6 @@ export default {
 <style lang="css">
     .container {
         font-size: 30px;
+    
     }
 </style>

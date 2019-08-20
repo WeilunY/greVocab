@@ -2,7 +2,7 @@
     <div class="container">
 
         <el-table :data="words" style="width:100%"
-        :row-class-name="favorited">
+        :row-class-name="favorited" @row-click="navigateTo">
             <el-table-column type="index" label=""  sortable>
             </el-table-column>
 
@@ -14,10 +14,10 @@
 
             <el-table-column label="favorite">
                 <template slot-scope="scope">
-                <el-button v-if="scope.row.user_id > 0" circle plain type="warning" icon="el-icon-star-on"
-                    @click="toggleFavorite(scope.row, 0)"></el-button>
+                <el-button v-if="scope.row.user_id > 0" circle type="warning" icon="el-icon-star-on"
+                    @click.stop="toggleFavorite(scope.row, 0)"></el-button>
                 <el-button v-else circle plain type="warning" icon="el-icon-star-off"
-                    @click="toggleFavorite(scope.row, 1)"></el-button>
+                    @click.stop="toggleFavorite(scope.row, 1)"></el-button>
                 </template>
             </el-table-column>
 
@@ -28,8 +28,10 @@
 </template>
 
 <script>
+//import Home from '@/views/home/home.vue';
 export default {
     name: "word-table",
+
 
     props:{
         words: Array,
@@ -52,7 +54,12 @@ export default {
          */
         async toggleFavorite(row, status){
             this.$parent.toggleFavorite(row, status)
-        }
+        },
+
+        navigateTo(row){
+            this.$store.state.adminCurrentMenu = 'flashCard'
+            this.$router.push({name: 'flashCard', params: {word_id: row.id}})
+        } 
 
     }
     
@@ -62,7 +69,7 @@ export default {
 <style>
 
     .el-table .success-row {
-        background: #f0f9eb;
+        background: #e2f4fd;
     }
 
 

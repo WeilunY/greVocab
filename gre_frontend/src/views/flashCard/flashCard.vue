@@ -14,14 +14,6 @@ export default {
         Card,
     },
 
-    props:{
-        word_id: Number,
-    },
-
-    data() {
-        return {}
-    },
-    methods: {}
 }
 </script>
 <style lang="css">

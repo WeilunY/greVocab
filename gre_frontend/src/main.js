@@ -7,8 +7,10 @@ import VueRouter from 'vue-router';
 import ElementUI from 'element-ui';
 import locale from 'element-ui/lib/locale/lang/en'
 import 'element-ui/lib/theme-chalk/index.css';
+import Vuex from 'vuex'
 
 
+Vue.use(Vuex)
 Vue.use(VueRouter);
 Vue.use(ElementUI, {locale,});
 Vue.config.productionTip = false
@@ -29,10 +31,23 @@ router.beforeEach((to, from, next) => {
   }
 });
 
+const store = new Vuex.Store({
+  state: {
+  count: 0,
+    adminCurrentMenu:"1" 
+  },
+  mutations: {
+    increment (state) {
+      state.count++
+      }
+    }
+  })
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
 
   // start app with property as first route
   render: (h) => {

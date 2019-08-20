@@ -87,7 +87,7 @@ public class WordController {
     @PostMapping("changeFavorite")
     public Result changeFavorite(@RequestBody Map<String, Integer> info){
 
-     
+
             // get important value
             int user_id = info.get("user_id");
             int word_id = info.get("word_id");

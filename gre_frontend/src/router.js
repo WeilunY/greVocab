@@ -13,7 +13,7 @@ export default  [
         },
         children: [
             {
-                path: '/wordList.html',
+                path: '/wordList',
                 name: 'wordList',
                 meta: {
                     title: 'Word List',
@@ -26,7 +26,7 @@ export default  [
                 }
             },
             {
-                path: '/flashCard.html',
+                path: '/flashCard',
                 name: 'flashCard',
                 meta: {
                     title: 'Flash Card',
