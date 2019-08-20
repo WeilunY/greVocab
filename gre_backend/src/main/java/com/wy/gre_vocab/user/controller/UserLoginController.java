@@ -20,10 +20,10 @@ public class UserLoginController {
     @PostMapping("/verify")
     public Result verifyLogin(@RequestBody @NotNull Map<String, String> user) {
 
-        String username = user.get("username");
+        String email= user.get("email");
         String password = user.get("password");
 
-        int status = userLoginService.verifyUser(username, password);
+        int status = userLoginService.verifyUser(email, password);
 
         if (status == -1){
             return Result.error("WRONG INFO");

@@ -41,7 +41,7 @@ export default  [
 
         ]
     }, 
-    {
+    {  
         path: '/login',
         name: 'login',
         meta: {
@@ -51,6 +51,19 @@ export default  [
             require.ensure([], () => {
                 return resolve(require('./views/login/login.vue'))
             }, 'login/login')
+        }
+    },
+
+    {  
+        path: '/register',
+        name: 'register',
+        meta: {
+            title: 'Register',
+        }, 
+        component: (resolve) => {
+            require.ensure([], () => {
+                return resolve(require('./views/login/register.vue'))
+            }, 'login/register')
         }
     }
 ]

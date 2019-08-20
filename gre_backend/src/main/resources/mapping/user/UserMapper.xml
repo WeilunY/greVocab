@@ -9,13 +9,34 @@
 
     <select id="checkExist" resultType="int">
         SELECT COUNT(1) FROM `user`
-        WHERE `username` = #{username}
+        WHERE `email` = #{email}
     </select>
 
     <insert id="createNewUser">
         INSERT INTO `user`
         SET `username` = #{username},
-            `password` = #{password}
+            `password` = #{password},
+            `email` = #{email}
     </insert>
+
+    <select id="getUser" resultType="com.wy.gre_vocab.user.entity.UserSafe">
+        select id, username, email from `user`
+        where id = #{id}
+    </select>
+
+    <select id="checkExistId" resultType="int">
+        select count(1) from `user`
+        where id = #{id}
+    </select>
+
+    <update id="updateUser" parameterType="com.wy.gre_vocab.user.entity.User">
+        update `user`
+        <set>
+            <if test="username != null">username = #{username},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="email != null">email = #{email},</if>
+        </set>
+        where id = #{id}
+    </update>
 
 </mapper>

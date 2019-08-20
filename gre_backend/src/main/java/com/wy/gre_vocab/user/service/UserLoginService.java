@@ -11,9 +11,9 @@ public class UserLoginService {
     @Resource
     UserLoginMapper userLoginMapper;
 
-    public int verifyUser(String username, String password){
-        if (userLoginMapper.verifyUser(username, password) != 0){
-            return userLoginMapper.getID(username, password);
+    public int verifyUser(String email, String password){
+        if (userLoginMapper.verifyUser(email, password) != 0){
+            return userLoginMapper.getID(email, password);
         } else {
             return -1;
         }
