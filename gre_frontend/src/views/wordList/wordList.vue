@@ -1,18 +1,21 @@
 <template>
   <div class="container">
       <!-- word table -->
-      <word-table v-bind:words="word_list"></word-table>
+      <word-table v-bind:words="word_list" style="margin-bottom: 20px;"></word-table>
 
       <!-- change page -->
+      <div class="page">
           <el-pagination
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
             :current-page="currentPage"
-            :page-sizes="[10, 15, 20]"
+            :page-sizes="[12, 15, 20]"
             :page-size="pageSize"
+            background
             layout="total, sizes, prev, pager, next, jumper"
             :total="total">
           </el-pagination>
+      </div>
   </div>
 </template>
 
@@ -28,7 +31,7 @@ export default {
 
   created(){
     this.getUserId()
-    this.getRange(1, 10, this.user_id)
+    this.getRange(1, 12, this.user_id)
   
     this.getSize()
   },
@@ -37,7 +40,7 @@ export default {
         return {
             word_list: [],
             currentPage: 1,
-            pageSize: 10,
+            pageSize: 12,
             total: 10,
             favorites: [],
             user_id: -1,
@@ -137,7 +140,15 @@ export default {
 </script>
 <style lang="css">
     .container {
-        font-size: 30px;
+        /*max-width: 1200px;*/
+        margin-left: 6%;
+        margin-right: 6%;
     
+    }
+
+    .page {
+     position: sticky;
+     bottom: 10px;
+      
     }
 </style>

@@ -7,6 +7,7 @@
 		mode="horizontal" @select="handleSelect">
 			<el-menu-item index="wordList">Word List</el-menu-item>
 			<el-menu-item index="flashCard">Flash Card</el-menu-item>
+			<el-menu-item index="profile">Profile</el-menu-item>
 			<div class="logout">
 				<el-button type="danger" size="small" @click="handleLogOut">Logout</el-button>
 			</div>

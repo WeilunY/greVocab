@@ -12,7 +12,7 @@
             <el-table-column prop="chin_def" label="Chinese Definition" >
             </el-table-column>
 
-            <el-table-column label="favorite">
+            <el-table-column label="Favorite">
                 <template slot-scope="scope">
                 <el-button v-if="scope.row.user_id > 0" circle type="warning" icon="el-icon-star-on"
                     @click.stop="toggleFavorite(scope.row, 0)" size="small"></el-button>

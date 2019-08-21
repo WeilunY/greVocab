@@ -39,6 +39,19 @@ export default  [
                 }
             },
 
+            {
+                path: '/profile',
+                name: 'profile',
+                meta: {
+                    title: 'Profile'
+                },
+                component: (resolve) => {
+                    require.ensure([], () => {
+                        return resolve(require('./views/profile/profile.vue'))
+                    }, 'profile/profile')
+                }
+            }
+
         ]
     }, 
     {  
